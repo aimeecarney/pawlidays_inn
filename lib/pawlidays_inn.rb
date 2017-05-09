@@ -1,5 +1,2 @@
-require "pawlidays_inn/version"
-
-module PawlidaysInn
-  # Your code goes here...
-end
+require_relative './pawlidays_inn/version'
+require_relative './pawlidays_inn/cli'
