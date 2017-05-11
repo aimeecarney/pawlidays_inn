@@ -22,3 +22,7 @@ Listing has a name
 Listing has a price per night
 Listing has a Address
 Listing as a URL
+
+BRING FIDO URL (w/ variables) https://www.bringfido.com/lodging/search/?location=#{CITY}%2C+#{STATE}%2C+US&arrival=#{CHECKIN_DATE}&departure=#{CHECKOUT_DATE}&rooms=1&adults=2&dogs=1&type=&rating_low=0&price=0%2C500
+
+AIR BNB URL (w/ variables) https://www.airbnb.com/s/#{CITY}-#{STATE}/homes?adults=2&allow_override%5B%5D=&amenity=pet-friendly&checkin=#{CHECKIN_DATE}&checkout=#{CHECKOUT_DATE}&gclid=CjwKEAjw9MrIBRCr2LPek5-h8U0SJAD3jfhtl9hkPiVSqmTAhWk03OtJQFsQedru2tQUUNu2WgYTgBoCqBzw_wcB&guests=2&hosting_amenities%5B%5D=12&in_vr=1&room_types%5B%5D=Entire%20home%2Fapt&s_tag=pkYHg0Tf
