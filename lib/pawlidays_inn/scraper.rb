@@ -1,0 +1,4 @@
+class PawlidaysInn::Scraper
+
+
+end

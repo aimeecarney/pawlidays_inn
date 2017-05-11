@@ -11,4 +11,4 @@ require "pawlidays_inn"
 # Pry.start
 
 require "irb"
-IRB.start(__FILE__)
+IRB.start

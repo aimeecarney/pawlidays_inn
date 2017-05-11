@@ -1,2 +1,4 @@
-require_relative './pawlidays_inn/version'
-require_relative './pawlidays_inn/cli'
+module PawlidaysInn
+end
+
+require_relative '../config/environment'
