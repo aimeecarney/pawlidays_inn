@@ -3,7 +3,15 @@ require 'pry'
 class PawlidaysInn::Scraper
 
   def get_page(city, state)
-    Nokogiri::HTML(open("https://www.airbnb.com/s/#{URI.encode(city)}—-#{URI.encode(state)}-—United-States/homes?allow_override%5B%5D=&hosting_amenities%5B%5D=12&s_tag=EVviYajS"))
+    bring_fido = Nokogiri::HTML(open("https://www.bringfido.com/lodging/city/#{city}_#{state}_us/?"))
+
+    bring_fido.css("#results-list").each do |result|
+      listing = Listing.new
+      listing.title = result.css("data-name")
+      listing.price = result.css("")
+    end
+
+
     binding.pry
   end
 

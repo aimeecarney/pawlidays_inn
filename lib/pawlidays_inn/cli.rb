@@ -15,7 +15,6 @@ class PawlidaysInn::CLI
     city = gets.strip
     puts "Please enter the state abbreviation the city is in:"
     state = gets.strip
-    binding.pry
 
     PawlidaysInn::Scraper.new.get_page(city, state)
 
