@@ -3,27 +3,19 @@ require 'pry'
 class PawlidaysInn::Scraper
 
   def get_page(city, state)
-    bring_fido = Nokogiri::HTML(open("https://www.bringfido.com/lodging/city/#{city}_#{state}_us/?"))
-
-    bring_fido.css("#results-list").each do |result|
-      listing = Listing.new
-      listing.title = result.css("data-name")
-      listing.price = result.css("")
-    end
-
-
-    binding.pry
+    Nokogiri::HTML(open("https://www.bringfido.com/lodging/city/#{city}_#{state}_us/?"))
   end
 
-#  def scrape_page
-#    self.get_page.css("")
-#  end
-#
-#  def make_listings
-#    scrape_page_index.each do |r|
-#      WorldsBestRestaurants::Restaurant.new_from_index_page(r)
-#    end
-#  end
+  def scrape_page
+    self.get_page.css("div#results-list").each do |result|
+      self.get_page.css(".object-wrapper").each_with_index do |listing, i|
+      listing = PawlidaysInn::Listing.new
+      listing.name = result.css("div.info a").text
+      listing.price = result.css("div.price a .amount").text
+      puts "#{i}. #{listing.name} - #{listing.price}"
+      end
+    end
+  end
 
 
 end

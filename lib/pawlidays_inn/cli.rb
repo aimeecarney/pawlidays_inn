@@ -16,21 +16,20 @@ class PawlidaysInn::CLI
     puts "Please enter the state abbreviation the city is in:"
     state = gets.strip
 
-    PawlidaysInn::Scraper.new.get_page(city, state)
-
-    print_listings #print all listings with scrape/listing class
+    results_page = PawlidaysInn::Scraper.new.get_page(city, state)
+    print_listing #print all listings with scrape/listing class
 
     while input != "exit"
       puts ""
-      puts "Which listing would you like more information on?"
+      puts "Which listing would you like more information on? (please enter number)"
       puts ""
       puts "Enter list to see the listings again."
       puts "Enter exit to end the program."
       puts ""
       input = gets.strip
       if input == "list"
-        print_listings
-      elsif input.to_1 > 0
+        print_listing
+      elsif input.to_i > 0
         #print listing chosen from number on list
       end
     end
@@ -39,9 +38,8 @@ class PawlidaysInn::CLI
   end
 
   def print_listing
-
+    PawlidaysInn::Scraper.scrape_page
   end
 
-  # AIR BNB URL https://www.airbnb.com/s/#{city}-#{state}/homes?adults=2&allow_override%5B%5D=&amenity=pet-friendly&checkin=#{checkin}&checkout=#{checkout}&gclid=CjwKEAjw9MrIBRCr2LPek5-h8U0SJAD3jfhtl9hkPiVSqmTAhWk03OtJQFsQedru2tQUUNu2WgYTgBoCqBzw_wcB&guests=2&hosting_amenities%5B%5D=12&in_vr=1&room_types%5B%5D=Entire%20home%2Fapt&s_tag=pkYHg0Tf
 
 end

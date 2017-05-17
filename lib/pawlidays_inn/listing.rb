@@ -1,15 +1,12 @@
 class PawlidaysInn::Listing
-  attr_accessor :name, :price, :address, :url, :description
+  attr_accessor :name, :price
 
   @@all = []
 
 
-  def initialize(name=nil, price=nil, address=nil, url=nil, description=nil)
+  def initialize(name=nil, price=nil)
     @name = name
     @price = price
-    @address = address
-    @url = url
-    @description = description
     @@all << self
   end
 
