@@ -17,7 +17,8 @@ class PawlidaysInn::CLI
     state = gets.strip
     puts ""
     puts ""
-    print_listing #print all listings with scrape/listing class
+    # results_page = PawlidaysInn::Scraper.new.get_page(state, city)
+    print_listings #print all listings with scrape/listing class
 
     while input != "exit"
       puts ""
@@ -28,17 +29,22 @@ class PawlidaysInn::CLI
       puts ""
       input = gets.strip
       if input == "list"
-        print_listing
+        print_listings
       elsif input.to_i > 0
-        #print listing chosen from number on list
+        input.to_i = number
+        print_listings(number)
       end
     end
 
 
   end
 
-  def print_listing
-    Scraper.new.scrape_page
+  def print_listings
+    PawlidaysInn::Scraper.scrape_page
+  end
+
+  def print_listing(input)
+    PawlidaysInn::Scraper.scrape_listing
   end
 
 
