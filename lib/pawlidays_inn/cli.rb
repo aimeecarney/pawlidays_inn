@@ -11,12 +11,12 @@ class PawlidaysInn::CLI
   def start
 
     puts ""
-    puts "Please enter the city you would like to visit with Perro:"
+    puts "Please enter the state you would like to visit with Perro:"
     city = gets.strip
-    puts "Please enter the state abbreviation the city is in:"
+    puts "Please enter the city:"
     state = gets.strip
-
-    results_page = PawlidaysInn::Scraper.new.get_page(city, state)
+    puts ""
+    puts ""
     print_listing #print all listings with scrape/listing class
 
     while input != "exit"
@@ -38,7 +38,7 @@ class PawlidaysInn::CLI
   end
 
   def print_listing
-    PawlidaysInn::Scraper.scrape_page
+    Scraper.new.scrape_page
   end
 
 
