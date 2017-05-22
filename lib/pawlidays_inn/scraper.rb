@@ -1,22 +1,20 @@
 class PawlidaysInn::Scraper
 
-  def self.get_page(state, city)
-    Nokogiri::HTML(open("http://hotels.petswelcome.com/#{state}/#{city}/"))
+  def self.get_page(url)
+    @page = Nokogiri::HTML(open("#{url}"))
     #test url: http://hotels.petswelcome.com/illinois/chicago/
     #"http://hotels.petswelcome.com/#{state}/#{city}/"
   end
 
   #
-  def self.scrape_page
-    self.get_page.css("h4 a")
-  end
+  def self.scrape_listings
+    listings = @page.css("div.lodgingInfo")
 
-  def self.make_listings
-    self.scrape_page.each_with_index do |listing, i|
+    listings.each_with_index do |listing, i|
       listing = PawlidaysInn::Listing.new
-      listing.name = self.get_page.css("h4 a").text
-      puts ""
-      puts "#{i}. #{listing.name}"
+      listing.name = @page.css("h4 a").text
+      indexplusone = i + 1
+      puts "#{indexplusone}. #{listing.name}"
     end
   end
 

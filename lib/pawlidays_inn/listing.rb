@@ -10,6 +10,9 @@ class PawlidaysInn::Listing
     @address = address
     @pet_fee = pet_fee
     @pet_policy = pet_policy
+
+    @@all << self
+
   end
 
   def self.all
