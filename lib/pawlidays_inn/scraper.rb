@@ -1,20 +1,22 @@
-require 'pry'
-
 class PawlidaysInn::Scraper
 
-  def get_page(state, city)
-    page = Nokogiri::HTML(open("http://hotels.petswelcome.com/#{state}/#{city}/"))
+  def self.get_page(state, city)
+    Nokogiri::HTML(open("http://hotels.petswelcome.com/#{state}/#{city}/"))
     #test url: http://hotels.petswelcome.com/illinois/chicago/
+    #"http://hotels.petswelcome.com/#{state}/#{city}/"
   end
 
-
+  #
   def self.scrape_page
-    self.get_page.css("div#featuredWrapper").each_with_index do |listing, i|
-    listing = PawlidaysInn::Listing.new
-    listing.name = listing.css("h4 a").text
-    # listing.address = result.css("p.address").text
-    # listing.pet_fee = result.css("a.petFee").text
-    puts "#{i}. #{listing.name}"
+    self.get_page.css("h4 a")
+  end
+
+  def self.make_listings
+    self.scrape_page.each_with_index do |listing, i|
+      listing = PawlidaysInn::Listing.new
+      listing.name = self.get_page.css("h4 a").text
+      puts ""
+      puts "#{i}. #{listing.name}"
     end
   end
 

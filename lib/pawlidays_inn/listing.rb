@@ -4,11 +4,12 @@ class PawlidaysInn::Listing
   @@all = []
 
 
-  def initialize(name=nil, address=nil, pet_fee=nil)
+  def initialize(name=nil, url=nil, address=nil, pet_fee=nil, pet_policy=nil)
     @name = name
-    @price = price
+    @url = url
+    @address = address
     @pet_fee = pet_fee
-    @@all << self
+    @pet_policy = pet_policy
   end
 
   def self.all
