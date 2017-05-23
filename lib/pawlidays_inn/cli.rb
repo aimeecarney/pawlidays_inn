@@ -9,7 +9,7 @@ class PawlidaysInn::CLI
   def start
 
     puts ""
-    puts "Please enter the state (spelled out) you would like to visit with Perro:"
+    puts "Please enter the state (spelled out) you would like to visit with Fido:"
     state = gets.strip
     puts "Please enter the city:"
     city = gets.strip
@@ -23,8 +23,8 @@ class PawlidaysInn::CLI
     puts ""
 
     PawlidaysInn::Listing.all.each.with_index(1) do |listing, i|
-      puts "#{i}. #{listing.name}"
-      end
+        puts "#{i}. #{listing.name}"
+        end
 
     puts ""
     puts "Which listing would you like more information on? (please enter number)"
@@ -44,7 +44,17 @@ class PawlidaysInn::CLI
     puts "#{listing.pet_policy}"
     puts ""
 
-
+    puts ""
+    puts "Would you like to see another listing? (Y/N)"
+    puts ""
+    input = gets.strip.upcase
+      if input == "Y"
+        start
+      else
+        puts ""
+        puts "Thank you for visiting, hope you and Fido found a place to stay!"
+        exit
+      end
 
 
   end
