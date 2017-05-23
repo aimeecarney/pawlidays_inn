@@ -1,4 +1,4 @@
-class PawlidayInn::Scraper
+class PawlidaysInn::Scraper
 
   def self.get_page(url)
     @page = Nokogiri::HTML(open("#{url}"))
@@ -12,7 +12,7 @@ class PawlidayInn::Scraper
 
   def self.make_listings
     scrape_page.each do |listing|
-      PawlidayInn::Listing.new_from_page(listing)
+      PawlidaysInn::Listing.new_from_page(listing)
     end
   end
 

@@ -1,8 +1,9 @@
 #Our CLI Controller
-class PawlidayInn::CLI
+class PawlidaysInn::CLI
 
   def call
-    puts "Welcome to Pawliday Inn!"
+    puts ""
+    puts "Welcome to Pawlidays Inn!"
     start
   end
 
@@ -16,13 +17,13 @@ class PawlidayInn::CLI
     puts ""
     puts ""
     url = "http://hotels.petswelcome.com/#{state}/#{city}/"
-    results_page = PawlidayInn::Scraper.get_page(url)
-    PawlidayInn::Scraper.make_listings
+    results_page = PawlidaysInn::Scraper.get_page(url)
+    PawlidaysInn::Scraper.make_listings
 
     puts "Pet Friendly Hotels in #{city.capitalize}, #{state.capitalize}:"
     puts ""
 
-    PawlidayInn::Listing.all.each.with_index(1) do |listing, i|
+    PawlidaysInn::Listing.all.each.with_index(1) do |listing, i|
         puts "#{i}. #{listing.name}"
         end
 
@@ -30,12 +31,10 @@ class PawlidayInn::CLI
     puts "Which listing would you like more information on? (please enter number)"
     puts ""
     input = gets.strip
-    listing = PawlidayInn::Listing.find(input.to_i)
+    listing = PawlidaysInn::Listing.find(input.to_i)
 
     puts ""
     puts "----------- #{listing.name} -----------"
-    puts ""
-    puts "Hotel URL: #{listing.url}"
     puts ""
     puts "Address:"
     puts "#{listing.address}"
