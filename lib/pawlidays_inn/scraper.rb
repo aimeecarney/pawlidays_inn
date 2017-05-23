@@ -10,34 +10,32 @@ class PawlidaysInn::Scraper
     @page.search("div.featured.lodging")
   end
 
-  #
   def self.make_listings
     scrape_page.each do |listing|
       PawlidaysInn::Listing.new_from_page(listing)
     end
   end
 
-  def self.scrape_listing(input)
-    input = input.to_i
-
-    self.get_page.css("featured lodging-#{input} lodging").each do |listing|
-      listing.url = listing.css("a")
-      listing.address = listing.css("p.address").text
-      listing.pet_fee = listing.css("a.petFee").text
-      listing.pet_policy = listint.css("span").text
-      end
-        puts ""
-        puts "----------- #{listing.name} -----------"
-        puts ""
-        puts "Hotel URL:          #{listing.url}"
-        puts "Address:            #{listing.address}"
-        puts "Pet Fee:            #{listing.pet_fee}"
-        puts ""
-        puts "---------------Pet Policy--------------"
-        puts ""
-        puts "#{listing.pet_policy}"
-        puts ""
-  end
+  # def self.make_listing(input)
+  #   @page.css("div.featured.lodging-#{input}.lodging").each do |listing|
+  #     listing.url = listing.css("a")
+  #     listing.address = listing.css("p.address").text
+  #     listing.pet_fee = listing.css("a.petFee").text
+  #     listing.pet_policy = listint.css("span").text
+  #
+  #     puts ""
+  #     puts "----------- #{listing.name} -----------"
+  #     puts ""
+  #     puts "Hotel URL:          #{listing.url}"
+  #     puts "Address:            #{listing.address}"
+  #     puts "Pet Fee:            #{listing.pet_fee}"
+  #     puts ""
+  #     puts "---------------Pet Policy--------------"
+  #     puts ""
+  #     puts "#{listing.pet_policy}"
+  #     puts ""
+  #   end
+  # end
 
 
 end

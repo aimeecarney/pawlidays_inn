@@ -29,11 +29,22 @@ class PawlidaysInn::CLI
     puts ""
     puts "Which listing would you like more information on? (please enter number)"
     puts ""
+    input = gets.strip
+    listing = PawlidaysInn::Listing.find(input.to_i)
+
+    puts ""
+    puts "----------- #{listing.name} -----------"
+    puts ""
+    puts "Hotel URL:          #{listing.url}"
+    puts "Address:            #{listing.address}"
+    puts "Pet Fee:            #{listing.pet_fee}"
+    puts ""
+    puts "---------------Pet Policy--------------"
+    puts ""
+    puts "#{listing.pet_policy}"
+    puts ""
 
 
-      def print_listing(input)
-        PawlidaysInn::Scraper.scrape_listing
-      end
 
 
   end
