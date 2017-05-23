@@ -1,8 +1,8 @@
 #Our CLI Controller
-class PawlidaysInn::CLI
+class PawlidayInn::CLI
 
   def call
-    puts "Welcome to Pawlidays Inn!"
+    puts "Welcome to Pawliday Inn!"
     start
   end
 
@@ -10,19 +10,19 @@ class PawlidaysInn::CLI
 
     puts ""
     puts "Please enter the state (spelled out) you would like to visit with Fido:"
-    state = gets.strip
+    state = gets.strip.tr(' ', '-')
     puts "Please enter the city:"
-    city = gets.strip
+    city = gets.strip.tr(' ', '-')
     puts ""
     puts ""
     url = "http://hotels.petswelcome.com/#{state}/#{city}/"
-    results_page = PawlidaysInn::Scraper.get_page(url)
-    PawlidaysInn::Scraper.make_listings
+    results_page = PawlidayInn::Scraper.get_page(url)
+    PawlidayInn::Scraper.make_listings
 
     puts "Pet Friendly Hotels in #{city.capitalize}, #{state.capitalize}:"
     puts ""
 
-    PawlidaysInn::Listing.all.each.with_index(1) do |listing, i|
+    PawlidayInn::Listing.all.each.with_index(1) do |listing, i|
         puts "#{i}. #{listing.name}"
         end
 
@@ -30,16 +30,19 @@ class PawlidaysInn::CLI
     puts "Which listing would you like more information on? (please enter number)"
     puts ""
     input = gets.strip
-    listing = PawlidaysInn::Listing.find(input.to_i)
+    listing = PawlidayInn::Listing.find(input.to_i)
 
     puts ""
     puts "----------- #{listing.name} -----------"
     puts ""
-    puts "Hotel URL:          #{listing.url}"
-    puts "Address:            #{listing.address}"
-    puts "Pet Fee:            #{listing.pet_fee}"
+    puts "Hotel URL: #{listing.url}"
     puts ""
-    puts "---------------Pet Policy--------------"
+    puts "Address:"
+    puts "#{listing.address}"
+    puts ""
+    puts "Pet Fee: #{listing.pet_fee}"
+    puts ""
+    puts "--------------- Pet Policy --------------"
     puts ""
     puts "#{listing.pet_policy}"
     puts ""

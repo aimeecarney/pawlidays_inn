@@ -1,4 +1,4 @@
-class PawlidaysInn::Listing
+class PawlidayInn::Listing
   attr_accessor :name, :url, :address, :pet_fee, :pet_policy
 
   @@all = []
@@ -15,7 +15,7 @@ class PawlidaysInn::Listing
 
   def self.new_from_page(listing)
     self.new(
-      listing.css("h4").text, listing.css("href").text, listing.css("p.address").text, listing.css("apetFee").text, listing.css("span").text
+      listing.css("h4").text.strip, listing.css("href").text, listing.css("p.address").text, listing.css("apetFee").text, listing.css("span").text
     )
   end
 
