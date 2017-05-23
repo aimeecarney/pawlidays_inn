@@ -6,15 +6,14 @@ class PawlidaysInn::Scraper
     #"http://hotels.petswelcome.com/#{state}/#{city}/"
   end
 
-  #
-  def self.scrape_listings
-    listings = @page.css("div.lodgingInfo")
+  def self.scrape_page
+    @page.search("div.featured.lodging")
+  end
 
-    listings.each_with_index do |listing, i|
-      listing = PawlidaysInn::Listing.new
-      listing.name = @page.css("h4 a").text
-      indexplusone = i + 1
-      puts "#{indexplusone}. #{listing.name}"
+  #
+  def self.make_listings
+    scrape_page.each do |listing|
+      PawlidaysInn::Listing.new_from_page(listing)
     end
   end
 
