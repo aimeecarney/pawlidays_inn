@@ -36,7 +36,15 @@ class PawlidaysInn::CLI
     puts "Which listing would you like more information on? (please enter number)"
     puts ""
     input = gets.strip
+    input = input.to_i
+    if input == 0
+      puts "Invalid entry, please enter the number next to the listing you would like more informatin on."
+      puts ""
+      sleep(3)
+      list_listings
+    else
     listing = PawlidaysInn::Listing.find(input.to_i)
+    end
 
     puts ""
     puts "----------- #{listing.name} -----------"
