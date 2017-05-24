@@ -1,8 +1,6 @@
 # PawlidaysInn
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pawlidays_inn`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to Pawlidays Inn! Planning a trip and don't want to leave anyone out? This CLI Gem is just what you need, find a place that accommodates both you AND your four legged family member. This Gem displays pet friendly hotels and lodging based on your city and state input, scraped from: http://hotels.petswelcome.com/
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Install the gem and then run it. You will be prompted to input the state and city you want to visit, please spell both out. A list will then populate and you can choose a listing you want to learn more about.
 
 ## Development
 
@@ -33,4 +31,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/'acarney29-44671'/pawlidays_inn. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
