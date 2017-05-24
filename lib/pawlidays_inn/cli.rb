@@ -4,23 +4,28 @@ class PawlidaysInn::CLI
   def call
     puts ""
     puts "Welcome to Pawlidays Inn!"
-    start
+    collect_city_state
+    list_listings
   end
 
-  def start
+  def collect_city_state
 
     puts ""
     puts "Please enter the state (spelled out) you would like to visit with Fido:"
-    state = gets.strip.tr(' ', '-')
+    @state = gets.strip.tr(' ', '-')
     puts "Please enter the city:"
-    city = gets.strip.tr(' ', '-')
+    @city = gets.strip.tr(' ', '-')
     puts ""
     puts ""
-    url = "http://hotels.petswelcome.com/#{state}/#{city}/"
+    url = "http://hotels.petswelcome.com/#{@state}/#{@city}/"
     results_page = PawlidaysInn::Scraper.get_page(url)
     PawlidaysInn::Scraper.make_listings
 
-    puts "Pet Friendly Hotels in #{city.capitalize}, #{state.capitalize}:"
+  end
+
+  def list_listings
+
+    puts "Pet Friendly Hotels in #{@city.capitalize}, #{@state.capitalize}:"
     puts ""
 
     PawlidaysInn::Listing.all.each.with_index(1) do |listing, i|
@@ -50,15 +55,13 @@ class PawlidaysInn::CLI
     puts "Would you like to see another listing? (Y/N)"
     puts ""
     input = gets.strip.upcase
-      if input == "Y"
-        start
+    if input == "Y"
+        list_listings
       else
         puts ""
         puts "Thank you for visiting, hope you and Fido found a place to stay!"
         exit
       end
-
-
   end
 
 end
