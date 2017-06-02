@@ -22,6 +22,10 @@ class PawlidaysInn::Listing
     @@all
   end
 
+  def self.delete_all
+    @@all.clear
+  end
+
   def self.find(id)
     self.all[id-1]
   end

@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'pry'
 require_relative '../lib/pawlidays_inn'
 
-PawlidaysInn::CLI.new.call
+  PawlidaysInn::CLI.new.call

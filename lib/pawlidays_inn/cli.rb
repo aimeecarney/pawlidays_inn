@@ -19,6 +19,7 @@ class PawlidaysInn::CLI
     puts ""
     url = "http://hotels.petswelcome.com/#{@state}/#{@city}/"
     results_page = PawlidaysInn::Scraper.get_page(url)
+    PawlidaysInn::Listing.delete_all
     PawlidaysInn::Scraper.make_listings
 
   end
@@ -37,7 +38,7 @@ class PawlidaysInn::CLI
     puts ""
     input = gets.strip
     input = input.to_i
-    if input == 0
+    if !input.between?(1, PawlidaysInn::Listing.all.count)
       puts "Invalid entry, please enter the number next to the listing you would like more informatin on."
       puts ""
       sleep(3)
@@ -60,10 +61,13 @@ class PawlidaysInn::CLI
     puts ""
 
     puts ""
-    puts "Would you like to see another listing? (Y/N)"
+    puts "Would you like to see another listing? (Y/N) or Search New City/State (S)"
     puts ""
     input = gets.strip.upcase
     if input == "Y"
+        list_listings
+      elsif input == "S"
+        collect_city_state
         list_listings
       else
         puts ""
